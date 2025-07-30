@@ -114,6 +114,12 @@ body {
     margin-left: auto;
 }
 
+.logo-image {
+    height: 100px;
+    width: auto;
+    transition: transform 0.3s;
+}
+
 /* Footer */
 footer {
     text-align: center;
