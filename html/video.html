@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Leve</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/card_adms.css">
-    <link rel="stylesheet" href="css/card.css">
-    <link rel="stylesheet" href="js/script.js">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/card_adms.css">
+    <link rel="stylesheet" href="/css/card.css">
+    <link rel="stylesheet" href="/js/script.js">
 </head>
-<body>
     <nav class="menu">
         <!-- Item do Menu Principal -->
         <div class="menu-item has-submenu">
@@ -17,15 +16,15 @@
                 <span class="icon-menu"></span>Menu
             </button>
             <ul id="main-submenu" class="submenu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="contatos.html">Contatos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="/contatos.html">Contatos</a></li>
+                <li><a href="/sobre.html">Sobre</a></li>
             </ul>
         </div>
 
         <div class="logo-menu">
-            <a href="index.html" class="logo-link">
-                <img src="img/logo.png" alt="Logo do Site" class="logo-image">
+            <a href="/index.html" class="logo-link">
+                <img src="/img/logo.png" alt="Logo do Site" class="logo-image">
             </a>                                                                                                                                
         </div>
 
@@ -33,7 +32,7 @@
         <div class="menu-item has-submenu">
             <button class="menu-label" aria-expanded="false" aria-controls="liturgia-submenu">Liturgia</button>
             <ul id="liturgia-submenu" class="submenu">
-                <li><a href="liturgia/homilia.html">Homilia diaria</a></li>
+                <li><a href="/liturgia/homilia.html">Homilia diaria</a></li>
                 <li><a href="#">Santo do dia</a></li>
                 <li><a href="#">Versículo do dia</a></li>
             </ul>
@@ -43,7 +42,7 @@
         <div class="menu-item has-submenu">
             <button class="menu-label" aria-expanded="false" aria-controls="catequese-submenu">Catequese</button>
             <ul id="catequese-submenu" class="submenu">
-                <li><a href="html/video.html">Videos Aulas</a></li>
+                <li><a href="#">Videos Aulas</a></li>
                 <li><a href="#">E-books</a></li>
                 <li><a href="#">Dúvidas</a></li>
             </ul>
@@ -53,7 +52,7 @@
         <div class="menu-item has-submenu">
             <button class="menu-label" aria-expanded="false" aria-controls="oracoes-submenu">Orações</button>
             <ul id="oracoes-submenu" class="submenu">
-                <li><a href="oracoes/comuns.html">Comuns</a></li>
+                <li><a href="#">Comuns</a></li>
                 <li><a href="#">Terços Diversos</a></li>
                 <li><a href="#">Rosario N. Senhora</a></li>
             </ul>
@@ -63,7 +62,7 @@
         <div class="menu-item has-submenu">
             <button class="menu-label" aria-expanded="false" aria-controls="agenda-submenu">Agenda</button>
             <ul id="agenda-submenu" class="submenu">
-                <li><a href="agenda/missas.html">Missas</a></li>
+                <li><a href="#">Missas</a></li>
                 <li><a href="#">Confissões</a></li>
                 <li><a href="#">Eventos</a></li>
             </ul>
@@ -79,38 +78,14 @@
 
     <main>
         <section>
-            <!-- Inicia o conteudo de apresentação do site -->
-            <div class="content">
-                <h1>Bem-vindo(a)! a Escola da fé</h1>
-                <h3>Seu canal de estudos bíblicos</h3>
-            
-            <!-- Card para facilitar e capitar -->
-             <div class="card">
-                <img class="card-img" src="img/banner.png" alt="banner">
-                <a href="html/video.html"></a>
-             </div>
-             <br>
-            <div class="card">
-                <img class="card-img" src="img/img-padre.jpg" alt="Descrição" >
-            <div class="card-content">
-                <h3 class="card-titulo">Pe. Francisco Valbério Soares Bruno</h3>
-                <p class="card-text">Administrador Paroquial</p>
-            </div>
-            </div>
-            <div class="card">
-                <img class="card-img" src="img/dom francisco.png" alt="Descrição" >
-            <div class="card-content">
-                <h3 class="card-titulo">Dom. Francisco Agamenilton Damascena</h3>
-                <p class="card-text">Bispo Diocesano de Luziânia</p>
-            </div>
-            </div>
+            <div id="player"></div>
+                <div>
+                <button onclick="playVideo()">Play</button>
+                <button onclick="pauseVideo()">Pausar</button>
+                <button onclick="loadPlaylist()">Carregar Playlist</button>
             </div>
         </section>
     </main>
-
-    <script src="script.js"></script>
-
-    <script src="https://www.youtube.com/iframe_api"></script>
 
     <footer>
         <p>Atenciosamente,</p>
