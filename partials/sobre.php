@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Leve</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="js/script.js">
-</head>
-<body>
-
-    <?php
-        include ('head.php');
-    ?>
+<?php
+$title = 'Escola da Fé - Sobre Mim';
+include('partials/header.php');
+?>
 
     <main>
         <section>
@@ -25,11 +15,6 @@
             </div>
     </main>
 
-    <script src="script.js"></script>
-    <footer>
-        <p>Atenciosamente,</p>
-        <p>Mateus Gonçalves Batista da Silva</p>
-        <p>Técnico de Informática | Estudante de ADS</p>
-    </footer>
-</body>
-</html>
+<?php
+include('partials/footer.php');
+?>
