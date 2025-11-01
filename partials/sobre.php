@@ -1,6 +1,6 @@
 <?php
 $title = 'Escola da Fé - Sobre Mim';
-include('partials/header.php');
+include __DIR__ .'/header.php';
 ?>
 
     <main>
@@ -16,5 +16,5 @@ include('partials/header.php');
     </main>
 
 <?php
-include('partials/footer.php');
+include __DIR__ .'/footer.php';
 ?>
