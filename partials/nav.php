@@ -1,19 +1,21 @@
-    <nav class="menu">
+<?php
+?>
+<nav class="menu">
         <!-- Item do Menu Principal -->
         <div class="menu-item has-submenu">
             <button class="menu-toggle" aria-expanded="false" aria-controls="main-submenu">
                 <span class="icon-menu"></span>Menu
             </button>
             <ul id="main-submenu" class="submenu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="contatos.html">Contatos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="<?php echo $base_url; ?>index.php">Inicio</a></li>
+                <li><a href="<?php echo $base_url; ?>contatos.php">Contatos</a></li>
+                <li><a href="<?php echo $base_url; ?>sobre.php">Sobre</a></li>
             </ul>
         </div>
 
         <div class="logo-menu">
-            <a href="index.html" class="logo-link">
-                <img src="/assets/img/logo.png" alt="Logo do Site" class="logo-image">
+            <a href="<?php echo $base_url; ?>index.php" class="logo-link">
+                <img src="<?php echo $base_url; ?>assets/img/logo.png" alt="Logo do Site" class="logo-image">
             </a>
         </div>
 
@@ -21,7 +23,7 @@
         <div class="menu-item has-submenu">
             <button class="menu-label" aria-expanded="false" aria-controls="liturgia-submenu">Liturgia</button>
             <ul id="liturgia-submenu" class="submenu">
-                <li><a href="liturgia/homilia.html">Homilia diaria</a></li>
+                <li><a href="<?php echo $base_url; ?>liturgia/homilia.php">Homilia diaria</a></li>
                 <li><a href="#">Santo do dia</a></li>
                 <li><a href="#">Versículo do dia</a></li>
             </ul>
