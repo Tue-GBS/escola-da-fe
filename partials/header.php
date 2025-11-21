@@ -77,7 +77,7 @@ function resolve_path(string $relative): string {
         <div class="menu-item has-submenu">
             <button class="menu-label" aria-expanded="false" aria-controls="liturgia-submenu">Liturgia</button>
             <ul id="liturgia-submenu" class="submenu">
-                <li><a href="<?= resolve_path('liturgia/homilia.php') ?>">Homilia diária</a></li>
+                <li><a href="<?= resolve_path('homilia.php') ?>">Homilia diária</a></li>
                 <li><a href="#">Santo do dia</a></li>
                 <li><a href="#">Versículo do dia</a></li>
             </ul>
@@ -87,7 +87,7 @@ function resolve_path(string $relative): string {
         <div class="menu-item has-submenu">
             <button class="menu-label" aria-expanded="false" aria-controls="catequese-submenu">Catequese</button>
             <ul id="catequese-submenu" class="submenu">
-                <li><a href="<?= resolve_path('html/video.html') ?>">Vídeos Aulas</a></li>
+                <li><a href="<?= resolve_path('video.php') ?>">Vídeos Aulas</a></li>
             </ul>
         </div>
 
