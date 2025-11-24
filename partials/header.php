@@ -48,9 +48,7 @@ function resolve_path(string $relative): string {
     <title><?= htmlspecialchars($title) ?></title>
 
     <!-- usar resolve_path para garantir que o CSS seja encontrado em qualquer página -->
-    <link rel="stylesheet" href="<?= resolve_path('css/style.css') ?>">
-    <link rel="stylesheet" href="<?= resolve_path('css/card_adms.css') ?>">
-    <link rel="stylesheet" href="<?= resolve_path('css/card.css') ?>">
+    <link rel="stylesheet" href="<?= resolve_path('css/main.css') ?>">
 </head>
 <body>
     <!-- Navbar incorporada -->
