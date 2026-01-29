@@ -4,6 +4,9 @@ FROM php:8.2-apache
 # Habilita o mod_rewrite (se você vier a usar URLs bonitas)
 RUN a2enmod rewrite
 
+# Permite uso de .htaccess
+RUN sed -ri "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
+
 # Copia os arquivos do projeto para o diretório padrão do Apache
 COPY . /var/www/html/
 

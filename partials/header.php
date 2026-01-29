@@ -9,6 +9,15 @@ $base_url = ($rel === '//') ? '/' : $rel;
 // expõe também a versão em maiúsculas para compatibilidade
 $BASE_URL = $base_url;
 
+// Permite sobrescrita por variável de ambiente `BASE_URL` (útil em contêineres)
+$envBase = getenv('BASE_URL');
+if ($envBase !== false && trim($envBase) !== '') {
+    // normaliza: mantém barra final
+    $envBase = rtrim($envBase, '/') . '/';
+    $base_url = $envBase;
+    $BASE_URL = $base_url;
+}
+
 // Título da página, se não definido
 $title = $title ?? 'Paróquia Nossa Senhora do Perpétuo Socorro';
 
