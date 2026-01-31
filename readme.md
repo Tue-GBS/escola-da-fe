@@ -1,3 +1,102 @@
+# Escola da Fé
+
+## 📚 Projeto
+Site desenvolvido como exercício acadêmico usando HTML, CSS, JavaScript e PHP. O repositório contém uma versão estática que pode ser publicada em serviços como Vercel (apenas front-end) e uma versão completa em Docker/PHP para execução do site dinâmico.
+
+---
+
+## 🚀 Descrição
+- **Frontend:** HTML5, CSS3, JavaScript
+- **Backend:** PHP (rodando via Docker + Apache)
+
+## 🔧 Instruções rápidas
+
+### Execução com Docker (recomendado para PHP)
+1. Build e subir containers:
+```bash
+docker compose build
+docker compose up -d
+```
+2. Acesse: `http://localhost:8080` (o `docker-compose.yml` deste projeto expõe `8080:80`)
+3. Parar/remover:
+```bash
+docker compose down
+```
+
+### Hospedagem estática (Vercel)
+- O repositório tem uma versão estática que pode ser implantada no Vercel (HTML/CSS/JS). O Vercel NÃO executa código PHP nativamente.
+- Se você publicar no Vercel, só o conteúdo estático (páginas HTML, CSS, JS) ficará disponível.
+- Para funcionalidades PHP (formulários processados no servidor, templates PHP), use Docker, um servidor PHP (Apache/Nginx+PHP-FPM) ou um serviço que suporte PHP.
+
+## ⚙️ Pré-requisitos
+- Docker: https://www.docker.com/get-started
+- Docker Compose: https://docs.docker.com/compose/install/
+
+Se usar os scripts `install.sh` ou `run.ps1`, eles checam essas dependências automaticamente.
+
+## 🌐 BASE_URL — configuração e exemplos
+
+A aplicação usa a variável `BASE_URL` para construir caminhos de assets e links internos. Isso evita que caminhos absolutos quebrem quando o site é servido em subpasta ou domínio customizado.
+
+- Exemplos de valores:
+  - Servindo na raiz do localhost (desenvolvimento): `BASE_URL=/`
+  - Servindo na raiz de um domínio: `BASE_URL=/` ou `BASE_URL=https://meu-dominio.com/`
+  - Servindo em subpasta (ex.: GitHub Pages ou subdiretório): `BASE_URL=/escola-da-fe/` (observe a barra final)
+
+- Como usar (exemplos em PHP):
+
+```php
+<!-- Correto: usa $base_url definido em partials/header.php -->
+<link rel="stylesheet" href="<?= $base_url ?>css/main.css">
+<img src="<?= $base_url ?>assets/img/logo.png" alt="Logo">
+<a href="<?= $base_url ?>index.php">Início</a>
+```
+
+- Como definir via `docker-compose` / `.env`:
+
+```yaml
+services:
+  web:
+    environment:
+      - BASE_URL=/escola-da-fe/
+```
+
+ou criando um `.env` com:
+
+```
+BASE_URL=/escola-da-fe/
+```
+
+> Observação: mantenha apenas `.env.example` versionado. NÃO comite `.env` real com segredos.
+
+## 🧰 Scripts úteis
+
+- `install.sh` (Linux/macOS): ajuda a baixar `docker-compose.yml` (se necessário), cria `.env` a partir de `.env.example` e sobe containers.
+- `run.ps1` (Windows PowerShell): equivalente para Windows.
+
+Exemplos:
+
+```bash
+# baixando docker-compose de um repositório remoto (substitua <usuario>/<repo>):
+DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml" ./install.sh
+```
+
+```powershell
+# Exemplo PowerShell
+.\run.ps1 -DockerComposeUrl "https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml"
+```
+
+## 🔐 Boas práticas
+- Não mantenha `.env` com chaves no repositório. Use `.env.example` (valores fictícios) e adicione `.env` ao `.gitignore`.
+- Use secrets do provedor (GitHub Secrets, Docker secrets) para CI/CD.
+
+## 📦 CI / Publicação de imagem Docker
+- O workflow em `.github/workflows/docker-publish.yml` publica imagem quando há push na branch `master`.
+- Crie secrets `DOCKERHUB_USERNAME` e `DOCKERHUB_TOKEN` no GitHub para permitir push.
+
+---
+
+Se quiser, posso: validar `.gitignore`, garantir que `.env` não está rastreado, ou preparar um pequeno guia de deploy para Vercel + Docker.
 # Escola da fé
 
 ## 📚 Projeto de Faculdade
