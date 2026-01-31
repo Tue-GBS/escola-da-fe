@@ -1,0 +1,127 @@
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+.AppleDouble
+.LSOverride
+*.swp
+*~
+
+# Logs e bancos de dados
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.sqlite-journal
+
+# Node
+node_modules/
+npm-debug.log
+npm-debug.log.*
+yarn-debug.log
+yarn-error.log
+.npm
+.eslintcache
+
+# Composer / PHP
+vendor/
+composer.lock
+.php-cs-fixer.cache
+
+# ⚠️ SEGURANÇA: Arquivos de ambiente (NUNCA commitar credenciais)
+.env
+.env.local
+.env.*.local
+.env*.backup
+*.env.backup
+.env.production.local
+
+# Chaves privadas e credenciais
+*.pem
+*.key
+*.pub
+id_rsa
+id_rsa.pub
+known_hosts
+.ssh/
+
+# ⚠️ SEGURANÇA: Configurações sensíveis
+config/credentials.php
+config/secrets.php
+secrets.json
+.credentials
+auth.token
+token.json
+
+# IDEs / editores (podem conter informações pessoais)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.eclipse
+.project
+.classpath
+*.iml
+.netbeans/
+
+# Cache / build / artefatos temporários
+.cache/
+.sass-cache/
+dist/
+build/
+out/
+*.class
+*.jar
+
+# Dependências locais e executáveis
+bin/
+lib/
+
+# Docker
+.env.docker
+docker-compose.override.yml
+.dockerignore.local
+
+# Arquivos compactados (potencial risco de segurança)
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+
+# Uploads / arquivos de usuário (evitar versionamento)
+uploads/
+temp/
+tmp/
+**/uploads/
+**/temp/
+**/tmp/
+
+# Backups
+*.backup
+*.bak
+*~
+*.old
+
+# Sistema operacional - arquivos temporários
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.TemporaryItems
+
+# ⚠️ SEGURANÇA: Desabilitar .env.example se contiver dados sensíveis
+# Mantenha .env.example sempre com valores de exemplo seguros (NUNCA senhas reais)
+# ✅ SEMPRE commitar: .env.example (com valores seguros como "your-api-key-here")
+
+# ⚠️ SEGURANÇA: Bancos de dados locais e dados sensíveis
+*.db
+*.sqlite
+local.json
+dump.sql
+backup/
+**/backup/
+
+# Não ignore imagens e assets do projeto (controle de versão desejado)
+# assets/img/ é versionado propositalmente
+# assets/img/

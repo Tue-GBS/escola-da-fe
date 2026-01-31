@@ -48,6 +48,14 @@ function resolve_path(string $relative): string {
     // fallback: mantém como '#' para evitar 404
     return '#';
 }
+
+// Função helper: monta URL segura para assets
+function asset_url(string $path): string {
+    global $base_url;
+    // limpa barras extras no início
+    $path = ltrim($path, '/');
+    return $base_url . $path;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -56,52 +64,9 @@ function resolve_path(string $relative): string {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($title) ?></title>
 
-    <!-- usar resolve_path para garantir que o CSS seja encontrado em qualquer página -->
-    <link rel="stylesheet" href="<?= resolve_path('css/main.css') ?>">
+    <!-- usar $base_url para garantir CSS funcione em qualquer contexto (localhost, domínio, subpasta) -->
+    <link rel="stylesheet" href="<?= $base_url ?>css/main.css">
 </head>
 <body>
-    <!-- Navbar incorporada -->
-    <nav class="menu">
-        <!-- Item do Menu Principal -->
-        <div class="menu-item has-submenu">
-            <button class="menu-toggle" aria-expanded="false" aria-controls="main-submenu">
-                <span class="icon-menu"></span>Menu
-            </button>
-            <ul id="main-submenu" class="submenu">
-                <li><a href="<?= resolve_path('index.php') ?>">Início</a></li>
-                <li><a href="<?= resolve_path('contatos.php') ?>">Contatos</a></li>
-                <li><a href="<?= resolve_path('sobre.php') ?>">Sobre</a></li>
-            </ul>
-        </div>
-
-        <div class="logo-menu">
-            <a href="<?= resolve_path('index.php') ?>" class="logo-link">
-                <img src="<?= resolve_path('assets/img/logo.png') ?>" alt="Logo do Site" class="logo-image">
-            </a>
-        </div>
-
-        <!-- Item Liturgia -->
-        <div class="menu-item has-submenu">
-            <button class="menu-label" aria-expanded="false" aria-controls="liturgia-submenu">Liturgia</button>
-            <ul id="liturgia-submenu" class="submenu">
-                <li><a href="<?= resolve_path('homilia.php') ?>">Homilia diária</a></li>
-                <li><a href="#">Santo do dia</a></li>
-                <li><a href="#">Versículo do dia</a></li>
-            </ul>
-        </div>
-
-        <!-- Item Catequese -->
-        <div class="menu-item has-submenu">
-            <button class="menu-label" aria-expanded="false" aria-controls="catequese-submenu">Catequese</button>
-            <ul id="catequese-submenu" class="submenu">
-                <li><a href="<?= resolve_path('video.php') ?>">Vídeos Aulas</a></li>
-            </ul>
-        </div>
-
-        <!-- Item Busca -->
-        <div class="menu-item search-item">
-            <button class="menu-toggle" aria-label="Abrir busca">
-                <span class="icon-search"></span>Busca
-            </button>
-        </div>
-    </nav>
+    <!-- Menu removido daqui - agora em nav.php separado -->
+    <?php include __DIR__ . '/nav.php'; ?>
