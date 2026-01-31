@@ -21,7 +21,7 @@ if (-not (Test-Path docker-compose.yml)) {
 
     if (Is-PlaceholderUrl $DockerComposeUrl) {
         Write-Error "A URL fornecida parece conter placeholders. Substitua '<usuario>/<repo>' pela URL real do seu repositório."
-        Write-Error "Exemplo de formato: https://raw.githubusercontent.com/usuario/repo/main/docker-compose.yml"
+        Write-Error "Exemplo de formato: https://raw.githubusercontent.com/usuario/repo/master/docker-compose.yml"
         exit 1
     }
 

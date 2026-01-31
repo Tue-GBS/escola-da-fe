@@ -61,7 +61,7 @@ Você pode usar um script simples para baixar um `docker-compose.yml` (se não e
 ./install.sh
 
 # Se precisar baixar o `docker-compose.yml` de uma URL, passe a URL via variável de ambiente:
-DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/<usuario>/<repo>/main/docker-compose.yml" ./install.sh
+DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml" ./install.sh
 ```
 
 - Windows PowerShell:
@@ -71,7 +71,7 @@ DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/<usuario>/<repo>/main/dock
 .\run.ps1
 
 # Se precisar baixar o `docker-compose.yml` de uma URL, passe a URL como parâmetro:
-.\run.ps1 -DockerComposeUrl "https://raw.githubusercontent.com/<usuario>/<repo>/main/docker-compose.yml"
+.\run.ps1 -DockerComposeUrl "https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml"
 ```
 
 Os scripts irão exibir mensagens de erro claras caso não encontrem um `docker-compose.yml` local e você não fornecer uma URL. Evite copiar URLs genéricas — se quiser incluir uma URL no README, substitua `<usuario>/<repo>` pela URL real do seu repositório.
@@ -123,4 +123,4 @@ Exemplo de `docker-compose` em produção (usa `docker-compose.prod.yml`):
    ## 📦 Publicar imagem no Docker Hub via GitHub Actions
 
    1. No repositório GitHub, crie os secrets `DOCKERHUB_USERNAME` e `DOCKERHUB_TOKEN` (token do Docker Hub).
-   2. O workflow em `.github/workflows/docker-publish.yml` fará build e push automático quando der push na branch `main`.
+   2. O workflow em `.github/workflows/docker-publish.yml` fará build e push automático quando der push na branch `master`.
