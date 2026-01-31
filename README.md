@@ -1,225 +1,248 @@
 # Escola da Fé
 
-## 📚 Projeto
-Site desenvolvido como exercício acadêmico usando HTML, CSS, JavaScript e PHP. O repositório contém uma versão estática que pode ser publicada em serviços como Vercel (apenas front-end) e uma versão completa em Docker/PHP para execução do site dinâmico.
+Projeto desenvolvido como **trabalho de faculdade**, com o objetivo de criar um **site institucional moderno, organizado e responsivo**, aplicando boas práticas de desenvolvimento web, reaproveitamento de componentes e preparação para ambientes de desenvolvimento e produção com **Docker**.
+
+O projeto simula um site real de uma iniciativa educacional/religiosa chamada **Escola da Fé**, com foco em clareza das informações, estrutura limpa e facilidade de manutenção.
+
+🔗 **Demo (Vercel):** https://escola-da-fe.vercel.app
 
 ---
 
-## 🚀 Descrição
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Backend:** PHP (rodando via Docker + Apache)
+## ✨ Funcionalidades e Objetivos
 
-## 🔧 Instruções rápidas
+- Site institucional com páginas organizadas
+- Uso de **partials em PHP** (header, footer, seções reutilizáveis)
+- Estrutura clara de **assets** (CSS, JS e imagens)
+- Execução local simples
+- Execução isolada e reproduzível via **Docker**
+- Scripts de instalação rápida (Linux/macOS e Windows)
+- Base preparada para **CI/CD**
+- Separação de ambiente de desenvolvimento e produção
 
-### Execução com Docker (recomendado para PHP)
-1. Build e subir containers:
+---
+
+## 🧱 Tecnologias Utilizadas
+
+- **PHP**
+- **HTML5**
+- **CSS3**
+- **JavaScript**
+- **Docker**
+- **Docker Compose**
+- **PowerShell** (scripts auxiliares)
+
+---
+
+## 📁 Estrutura do Projeto
+
 ```bash
+escola-da-fe/
+├── assets/                # Arquivos estáticos (CSS, JS, imagens)
+├── partials/              # Componentes reutilizáveis (header, footer, etc.)
+├── .env.example           # Exemplo de variáveis de ambiente
+├── Dockerfile             # Definição da imagem Docker
+├── docker-compose.yml     # Ambiente local / desenvolvimento
+├── docker-compose.prod.yml# Ambiente de produção
+├── install.sh             # Script de instalação (Linux/macOS)
+├── run.ps1                # Script de instalação (Windows)
+├── index.php              # Entrada principal do site
+└── README.md
+✅ Requisitos
+Para rodar com Docker (recomendado)
+
+Docker
+
+Docker Compose (docker compose)
+
+Para rodar sem Docker
+
+PHP 8 ou superior
+
+Navegador web
+
+🚀 Como executar o projeto
+
+Você pode rodar o projeto de três formas diferentes.
+
+🔹 Opção 1 — Rodar com Docker (manual)
+
+Clone o repositório:
+
+git clone https://github.com/Tue-GBS/escola-da-fe.git
+cd escola-da-fe
+
+
+Construa e suba os containers:
+
 docker compose build
 docker compose up -d
-```
-2. Acesse: `http://localhost:8080` (o `docker-compose.yml` deste projeto expõe `8080:80`)
-3. Parar/remover:
-```bash
+
+
+Acesse no navegador:
+
+http://localhost:8080
+
+
+Para parar o projeto:
+
 docker compose down
-```
 
-### Hospedagem estática (Vercel)
-- O repositório tem uma versão estática que pode ser implantada no Vercel (HTML/CSS/JS). O Vercel NÃO executa código PHP nativamente.
-- Se você publicar no Vercel, só o conteúdo estático (páginas HTML, CSS, JS) ficará disponível.
-- Para funcionalidades PHP (formulários processados no servidor, templates PHP), use Docker, um servidor PHP (Apache/Nginx+PHP-FPM) ou um serviço que suporte PHP.
+🔹 Opção 2 — Instalação rápida (Linux / macOS) — install.sh
 
-## ⚙️ Pré-requisitos
-- Docker: https://www.docker.com/get-started
-- Docker Compose: https://docs.docker.com/compose/install/
+O script install.sh automatiza o processo de subida do projeto.
 
-Se usar os scripts `install.sh` ou `run.ps1`, eles checam essas dependências automaticamente.
+📋 O que ele faz:
 
-## 🌐 BASE_URL — configuração e exemplos
+Verifica se existe docker-compose.yml
 
-A aplicação usa a variável `BASE_URL` para construir caminhos de assets e links internos. Isso evita que caminhos absolutos quebrem quando o site é servido em subpasta ou domínio customizado.
+Caso não exista, permite baixar via URL
 
-- Exemplos de valores:
-  - Servindo na raiz do localhost (desenvolvimento): `BASE_URL=/`
-  - Servindo na raiz de um domínio: `BASE_URL=/` ou `BASE_URL=https://meu-dominio.com/`
-  - Servindo em subpasta (ex.: GitHub Pages ou subdiretório): `BASE_URL=/escola-da-fe/` (observe a barra final)
+Cria o .env a partir do .env.example (se necessário)
 
-- Como usar (exemplos em PHP):
+Executa docker compose up -d
 
-```php
-<!-- Correto: usa $base_url definido em partials/header.php -->
-<link rel="stylesheet" href="<?= $base_url ?>css/main.css">
-<img src="<?= $base_url ?>assets/img/logo.png" alt="Logo">
-<a href="<?= $base_url ?>index.php">Início</a>
-```
+Como usar:
 
-- Como definir via `docker-compose` / `.env`:
+Clone o projeto:
 
-```yaml
-services:
-  web:
-    environment:
-      - BASE_URL=/escola-da-fe/
-```
+git clone https://github.com/Tue-GBS/escola-da-fe.git
+cd escola-da-fe
 
-ou criando um `.env` com:
 
-```
-BASE_URL=/escola-da-fe/
-```
+Dê permissão de execução ao script (apenas uma vez):
 
-> Observação: mantenha apenas `.env.example` versionado. NÃO comite `.env` real com segredos.
+chmod +x install.sh
 
-## 🧰 Scripts úteis
 
-- `install.sh` (Linux/macOS): ajuda a baixar `docker-compose.yml` (se necessário), cria `.env` a partir de `.env.example` e sobe containers.
-- `run.ps1` (Windows PowerShell): equivalente para Windows.
+Execute o script:
+
+./install.sh
+
+
+🔧 Opcional — baixar o docker-compose.yml automaticamente:
+
+DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/Tue-GBS/escola-da-fe/master/docker-compose.yml" ./install.sh
+
+🔹 Opção 3 — Instalação rápida (Windows) — run.ps1
+
+O run.ps1 é a alternativa para usuários Windows.
+
+📋 O que ele faz:
+
+Verifica Docker
+
+Cria .env se não existir
+
+Sobe os containers automaticamente
+
+Como usar:
+
+Clone o repositório:
+
+git clone https://github.com/Tue-GBS/escola-da-fe.git
+cd escola-da-fe
+
+
+Execute o script:
+
+.\run.ps1
+
+
+🔧 Opcional — informar URL do compose:
+
+.\run.ps1 -DockerComposeUrl "https://raw.githubusercontent.com/Tue-GBS/escola-da-fe/master/docker-compose.yml"
+
+⚙️ Variáveis de Ambiente
+
+O projeto utiliza variáveis de ambiente centralizadas no arquivo .env.
+
+.env.example → exemplo versionado
+
+.env → configuração local (não versionar)
+
+Principais variáveis
+BASE_URL=http://localhost:8080
+APP_ENV=development
+
+BASE_URL
+
+Utilizada para corrigir caminhos de assets e links quando o projeto:
+
+roda em subdiretório
+
+roda em domínio real
+
+roda em container
 
 Exemplos:
 
-```bash
-# baixando docker-compose de um repositório remoto (substitua <usuario>/<repo>):
-DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml" ./install.sh
-```
+/
 
-```powershell
-# Exemplo PowerShell
-.\run.ps1 -DockerComposeUrl "https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml"
-```
+http://localhost:8080
 
-## 🔐 Boas práticas
-- Não mantenha `.env` com chaves no repositório. Use `.env.example` (valores fictícios) e adicione `.env` ao `.gitignore`.
-- Use secrets do provedor (GitHub Secrets, Docker secrets) para CI/CD.
+https://meusite.com
 
-## 📦 CI / Publicação de imagem Docker
-- O workflow em `.github/workflows/docker-publish.yml` publica imagem quando há push na branch `master`.
-- Crie secrets `DOCKERHUB_USERNAME` e `DOCKERHUB_TOKEN` no GitHub para permitir push.
+🏭 Ambiente de Produção (Docker)
+
+Para rodar em produção:
+
+docker compose -f docker-compose.prod.yml up -d --build
+
+
+Caso o compose utilize imagem pronta:
+
+export IMAGE_NAME=seuusuario/escola-da-fe:1.0
+export BASE_URL=/
+docker compose -f docker-compose.prod.yml up -d
+
+🤖 CI/CD — GitHub Actions
+
+O projeto possui pipeline de CI/CD para build e publicação de imagem Docker.
+
+📌 Funciona da seguinte forma:
+
+Executa ao dar push na branch master
+
+Constrói a imagem Docker
+
+Publica no Docker Hub
+
+Secrets necessários no GitHub:
+
+DOCKERHUB_USERNAME
+
+DOCKERHUB_TOKEN
+
+🧯 Problemas Comuns
+Porta 8080 ocupada
+
+Altere o mapeamento no docker-compose.yml, por exemplo:
+
+ports:
+  - "8081:80"
+
+
+Acesse:
+
+http://localhost:8081
+
+📜 Licença
+
+Projeto de caráter educacional.
+Uso livre para estudos e adaptações.
+
+👨‍💻 Autor
+
+Mateus Gonçalves 
+Projeto acadêmico — Escola da Fé
+
 
 ---
 
-Se quiser, posso: validar `.gitignore`, garantir que `.env` não está rastreado, ou preparar um pequeno guia de deploy para Vercel + Docker.
-# Escola da fé
+Se quiser, o próximo passo pode ser:
+- 🧼 revisar e melhorar os **scripts `install.sh` e `run.ps1`**
+- 🐳 revisar **Dockerfile e docker-compose**
+- 🔁 adaptar o README para **deploy real em VPS**
+- 🌐 converter o projeto para **100% estático**
 
-## 📚 Projeto de Faculdade
-Projeto desenvolvido durante as aulas do curso, aplicando conhecimentos de **HTML, CSS e JavaScript**.
-
-![Preview do Projeto]()
-
-## 🚀 Descrição
-Site estático desenvolvido com:
-- **HTML5** para estruturação do conteúdo
-- **CSS3** para estilização e layout responsivo
-- **JavaScript** para integração de API
-
-## 🔧 Instruções de Uso
-
-### Acesso Online
-O projeto está hospedado no Vercel, link abaixo:  
-🔗 [Escola da fé](https://escola-da-fe.vercel.app/)
-
-### Execução Local
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/Tue-GBS/escola-da-fe.git
-
-📄 Licença
-
-Este projeto está licenciado sob a MIT License - veja o arquivo <a href="license.text">License</a> para detalhes.
-
-## 🐳 Rodando com Docker
-
-1. Construa a imagem e inicie o container (usa `docker-compose`):
-   ```bash
-   docker compose build
-   docker compose up -d
-   ```
-
-2. Abra o navegador em: `http://localhost:8080`
-
-3. Para parar e remover containers:
-   ```bash
-   docker compose down
-   ```
-
-## ⚙️ Pré-requisitos
-
-Antes de executar os comandos Docker você precisa ter instalado e configurado:
-
-- Docker (Desktop para Windows/Mac, ou Docker Engine no Linux): https://www.docker.com/get-started
-- Docker Compose (plugin Compose v2 ou binário `docker-compose`): https://docs.docker.com/compose/install/
-
-Se você usar os scripts `install.sh` ou `run.ps1`, eles também irão checar a presença dessas ferramentas e mostrar links úteis caso estejam faltando.
-
-## 🧰 Scripts de instalação rápida
-
-Você pode usar um script simples para baixar um `docker-compose.yml` (se não existir), copiar `.env.example` → `.env` e subir os containers.
-
-- Linux / macOS:
-
-```bash
-# Se você já tem um `docker-compose.yml` no diretório, rode:
-./install.sh
-
-# Se precisar baixar o `docker-compose.yml` de uma URL, passe a URL via variável de ambiente:
-DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml" ./install.sh
-```
-
-- Windows PowerShell:
-
-```powershell
-# Se você já tem um `docker-compose.yml` no diretório, rode:
-.\run.ps1
-
-# Se precisar baixar o `docker-compose.yml` de uma URL, passe a URL como parâmetro:
-.\run.ps1 -DockerComposeUrl "https://raw.githubusercontent.com/<usuario>/<repo>/master/docker-compose.yml"
-```
-
-Os scripts irão exibir mensagens de erro claras caso não encontrem um `docker-compose.yml` local e você não fornecer uma URL. Evite copiar URLs genéricas — se quiser incluir uma URL no README, substitua `<usuario>/<repo>` pela URL real do seu repositório.
-
-   ## 🌐 Variáveis de ambiente e múltiplos ambientes
-
-- A aplicação suporta a variável de ambiente `BASE_URL` para ajustar a URL base (útil em produção ou quando estiver em subdiretório). Exemplo de valor: `/` ou `https://meu-dominio.com/`.
-- Também é possível definir `APP_ENV` (ex: `development` ou `production`).
-
-### BASE_URL - Configuração de Caminhos
-
-A variável `BASE_URL` é crítica quando o projeto é servido em diferentes contextos:
-
-- **Localhost (raiz):** `BASE_URL=/`
-- **Domínio (raiz):** `BASE_URL=/` ou deixar em branco (padrão)
-- **Subpasta:** `BASE_URL=/escola-da-fe/` (com barra no final)
-- **Domínio customizado:** `BASE_URL=https://meu-dominio.com/`
-
-Todos os caminhos de **assets** (CSS, JS, imagens) e **links internos** usam `<?= $base_url ?>` para garantir compatibilidade:
-
-```php
-<!-- Correto: usa $base_url -->
-<link rel="stylesheet" href="<?= $base_url ?>css/main.css">
-<img src="<?= $base_url ?>assets/img/logo.png" alt="Logo">
-<a href="<?= $base_url ?>index.php">Início</a>
-
-<!-- Errado: pode quebrar em subpastas -->
-<link rel="stylesheet" href="/css/main.css">
-<img src="/assets/img/logo.png" alt="Logo">
-```
-
-A variável `$base_url` é automaticamente calculada em `partials/header.php` e pode ser sobrescrita por variável de ambiente:
-
-```bash
-# via .env ou docker-compose
-BASE_URL=/escola-da-fe/ docker compose up
-```
-
-Exemplo de `docker-compose` em produção (usa `docker-compose.prod.yml`):
-
-   ```bash
-   # define variáveis antes de rodar (ou crie um arquivo .env.prod)
-   export IMAGE_NAME=meuusuario/escola-da-fe:1.0
-   export BASE_URL=/
-
-   docker compose -f docker-compose.prod.yml up -d --build
-   ```
-
-   ## 📦 Publicar imagem no Docker Hub via GitHub Actions
-
-   1. No repositório GitHub, crie os secrets `DOCKERHUB_USERNAME` e `DOCKERHUB_TOKEN` (token do Docker Hub).
-   2. O workflow em `.github/workflows/docker-publish.yml` fará build e push automático quando der push na branch `master`.
+Você mandou muito bem nesse projeto — agora o README está no nível de projeto sério 👊
