@@ -1,20 +1,35 @@
 <?php
-$title = 'Escola da Fé - Sobre Mim';
-include __DIR__ .'/header.php';
+if (!defined('APP_BOOTSTRAPPED')) {
+    header('Location: ../index.php#sobre');
+    exit;
+}
 ?>
 
-    <main>
-        <section>
-            <div class="intro">
-            <h2>Sobre mim</h2>
-            
-            <p>Me chamo Mateus e sou um profissional de TI apaixonado por tecnologia e soluções práticas. Como estudante de <strong>Análise e Desenvolvimento de Sistemas</strong>, combino conhecimento acadêmico com experiência prática adquirida como auxiliar de informática no Exército Brasileiro.</p>
+<section class="section about" id="sobre">
+    <div class="section__intro">
+        <p class="eyebrow">Sobre o projeto</p>
+        <h2>Formacao para crescer na fe, com clareza e acolhimento.</h2>
+        <p>
+            A Escola da Fe nasceu como uma iniciativa institucional para reunir estudos biblicos,
+            aulas, reflexoes e conteudos de catequese em um lugar simples de acessar e facil de manter.
+        </p>
+    </div>
 
-            <p>Complementei minha formação com cursos especializados pelo SENAI em áreas como manutenção de computadores, redes, web design e banco de dados, além de certificações em Desenvolvimento Web e Suporte Técnico. Acredito que essa combinação de conhecimentos técnicos e experiência prática me permite abordar os desafios de TI com uma perspectiva abrangente e soluções eficientes.</p>
-
+    <div class="about__grid">
+        <article class="about__card">
+            <img src="<?= asset('img/img-padre.jpg') ?>" alt="Pe. Francisco Valberio Soares Bruno">
+            <div>
+                <h3>Orientacao pastoral</h3>
+                <p>Conteudos conectados a caminhada paroquial e ao acompanhamento da comunidade.</p>
             </div>
-    </main>
+        </article>
 
-<?php
-include __DIR__ .'/footer.php';
-?>
+        <article class="about__card">
+            <img src="<?= asset('img/dom-francisco.png') ?>" alt="Dom Francisco Agamenilton Damascena">
+            <div>
+                <h3>Comunhao com a Igreja</h3>
+                <p>Uma proposta de formacao inspirada na vida liturgica, sacramental e missionaria.</p>
+            </div>
+        </article>
+    </div>
+</section>

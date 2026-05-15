@@ -1,248 +1,172 @@
-# Escola da Fé
+# Escola da Fe
 
-Projeto desenvolvido como **trabalho de faculdade**, com o objetivo de criar um **site institucional moderno, organizado e responsivo**, aplicando boas práticas de desenvolvimento web, reaproveitamento de componentes e preparação para ambientes de desenvolvimento e produção com **Docker**.
+Site institucional simples para a iniciativa **Escola da Fe**, com foco em formacao catolica, aulas, estudos biblicos e contato com a comunidade.
 
-O projeto simula um site real de uma iniciativa educacional/religiosa chamada **Escola da Fé**, com foco em clareza das informações, estrutura limpa e facilidade de manutenção.
+O projeto foi mantido em **PHP puro** porque a necessidade atual e institucional e leve. Isso evita dependencias desnecessarias, facilita hospedagem em qualquer servidor PHP e deixa o codigo mais facil de apresentar, estudar e evoluir.
 
-🔗 **Demo (Vercel):** https://escola-da-fe.vercel.app
+## Tecnologias
 
----
+- PHP 8.2
+- HTML5
+- CSS3 com variaveis e media queries
+- JavaScript puro para menu mobile
+- Docker e Docker Compose
 
-## ✨ Funcionalidades e Objetivos
+## Estrutura
 
-- Site institucional com páginas organizadas
-- Uso de **partials em PHP** (header, footer, seções reutilizáveis)
-- Estrutura clara de **assets** (CSS, JS e imagens)
-- Execução local simples
-- Execução isolada e reproduzível via **Docker**
-- Scripts de instalação rápida (Linux/macOS e Windows)
-- Base preparada para **CI/CD**
-- Separação de ambiente de desenvolvimento e produção
+```text
+.
+|-- assets/
+|   |-- css/main.css
+|   |-- img/
+|   `-- js/script.js
+|-- config/
+|   |-- app.php
+|   `-- content.php
+|-- partials/
+|   |-- beneficios.php
+|   |-- contatos.php
+|   |-- footer.php
+|   |-- header.php
+|   |-- hero.php
+|   |-- nav.php
+|   |-- sobre.php
+|   `-- video.php
+|-- Dockerfile
+|-- docker-compose.yml
+|-- docker-compose.prod.yml
+|-- index.php
+|-- MELHORIAS.md
+`-- README.md
+```
 
----
+## Como rodar sem Docker
 
-## 🧱 Tecnologias Utilizadas
+Requisitos:
 
-- **PHP**
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- **Docker**
-- **Docker Compose**
-- **PowerShell** (scripts auxiliares)
+- PHP 8 ou superior
 
----
-
-## 📁 Estrutura do Projeto
+Execute na raiz do projeto:
 
 ```bash
-escola-da-fe/
-├── assets/                # Arquivos estáticos (CSS, JS, imagens)
-├── partials/              # Componentes reutilizáveis (header, footer, etc.)
-├── .env.example           # Exemplo de variáveis de ambiente
-├── Dockerfile             # Definição da imagem Docker
-├── docker-compose.yml     # Ambiente local / desenvolvimento
-├── docker-compose.prod.yml# Ambiente de produção
-├── install.sh             # Script de instalação (Linux/macOS)
-├── run.ps1                # Script de instalação (Windows)
-├── index.php              # Entrada principal do site
-└── README.md
-✅ Requisitos
-Para rodar com Docker (recomendado)
-
-Docker
-
-Docker Compose (docker compose)
-
-Para rodar sem Docker
-
-PHP 8 ou superior
-
-Navegador web
-
-🚀 Como executar o projeto
-
-Você pode rodar o projeto de três formas diferentes.
-
-🔹 Opção 1 — Rodar com Docker (manual)
-
-Clone o repositório:
-
-git clone https://github.com/Tue-GBS/escola-da-fe.git
-cd escola-da-fe
-
-
-Construa e suba os containers:
-
-docker compose build
-docker compose up -d
-
-
-Acesse no navegador:
-
-http://localhost:8080
-
-
-Para parar o projeto:
-
-docker compose down
-
-🔹 Opção 2 — Instalação rápida (Linux / macOS) — install.sh
-
-O script install.sh automatiza o processo de subida do projeto.
-
-📋 O que ele faz:
-
-Verifica se existe docker-compose.yml
-
-Caso não exista, permite baixar via URL
-
-Cria o .env a partir do .env.example (se necessário)
-
-Executa docker compose up -d
-
-Como usar:
-
-Clone o projeto:
-
-git clone https://github.com/Tue-GBS/escola-da-fe.git
-cd escola-da-fe
-
-
-Dê permissão de execução ao script (apenas uma vez):
-
-chmod +x install.sh
-
-
-Execute o script:
-
-./install.sh
-
-
-🔧 Opcional — baixar o docker-compose.yml automaticamente:
-
-DOCKER_COMPOSE_URL="https://raw.githubusercontent.com/Tue-GBS/escola-da-fe/master/docker-compose.yml" ./install.sh
-
-🔹 Opção 3 — Instalação rápida (Windows) — run.ps1
-
-O run.ps1 é a alternativa para usuários Windows.
-
-📋 O que ele faz:
-
-Verifica Docker
-
-Cria .env se não existir
-
-Sobe os containers automaticamente
-
-Como usar:
-
-Clone o repositório:
-
-git clone https://github.com/Tue-GBS/escola-da-fe.git
-cd escola-da-fe
-
-
-Execute o script:
-
-.\run.ps1
-
-
-🔧 Opcional — informar URL do compose:
-
-.\run.ps1 -DockerComposeUrl "https://raw.githubusercontent.com/Tue-GBS/escola-da-fe/master/docker-compose.yml"
-
-⚙️ Variáveis de Ambiente
-
-O projeto utiliza variáveis de ambiente centralizadas no arquivo .env.
-
-.env.example → exemplo versionado
-
-.env → configuração local (não versionar)
-
-Principais variáveis
-BASE_URL=http://localhost:8080
-APP_ENV=development
-
-BASE_URL
-
-Utilizada para corrigir caminhos de assets e links quando o projeto:
-
-roda em subdiretório
-
-roda em domínio real
-
-roda em container
-
-Exemplos:
-
-/
-
-http://localhost:8080
-
-https://meusite.com
-
-🏭 Ambiente de Produção (Docker)
-
-Para rodar em produção:
-
-docker compose -f docker-compose.prod.yml up -d --build
-
-
-Caso o compose utilize imagem pronta:
-
-export IMAGE_NAME=seuusuario/escola-da-fe:1.0
-export BASE_URL=/
-docker compose -f docker-compose.prod.yml up -d
-
-🤖 CI/CD — GitHub Actions
-
-O projeto possui pipeline de CI/CD para build e publicação de imagem Docker.
-
-📌 Funciona da seguinte forma:
-
-Executa ao dar push na branch master
-
-Constrói a imagem Docker
-
-Publica no Docker Hub
-
-Secrets necessários no GitHub:
-
-DOCKERHUB_USERNAME
-
-DOCKERHUB_TOKEN
-
-🧯 Problemas Comuns
-Porta 8080 ocupada
-
-Altere o mapeamento no docker-compose.yml, por exemplo:
-
-ports:
-  - "8081:80"
-
+php -S localhost:8080
+```
 
 Acesse:
 
-http://localhost:8081
+```text
+http://localhost:8080
+```
 
-📜 Licença
+## Como rodar com Docker
 
-Projeto de caráter educacional.
-Uso livre para estudos e adaptações.
+Requisitos:
 
-👨‍💻 Autor
+- Docker
+- Docker Compose v2
 
-Mateus Gonçalves 
-Projeto acadêmico — Escola da Fé
+Suba o projeto:
 
+```bash
+docker compose up -d --build
+```
 
----
+Acesse:
 
-Se quiser, o próximo passo pode ser:
-- 🧼 revisar e melhorar os **scripts `install.sh` e `run.ps1`**
-- 🐳 revisar **Dockerfile e docker-compose**
-- 🔁 adaptar o README para **deploy real em VPS**
-- 🌐 converter o projeto para **100% estático**
+```text
+http://localhost:8080
+```
 
-Você mandou muito bem nesse projeto — agora o README está no nível de projeto sério 👊
+Para parar:
+
+```bash
+docker compose down
+```
+
+Tambem existem scripts auxiliares simples:
+
+```bash
+./install.sh
+```
+
+No Windows PowerShell:
+
+```powershell
+.\run.ps1
+```
+
+## Ambiente
+
+O arquivo `.env.example` contem apenas valores seguros de exemplo. Se precisar sobrescrever configuracoes locais, copie:
+
+```bash
+cp .env.example .env
+```
+
+Principais variaveis:
+
+```env
+BASE_URL=/
+APP_ENV=development
+IMAGE_NAME=escola-da-fe:latest
+HTTP_PORT=80
+```
+
+O arquivo `.env` esta no `.gitignore` e nao deve ser versionado.
+
+## Como editar conteudos
+
+Os conteudos principais ficam em:
+
+```text
+config/content.php
+```
+
+Nesse arquivo voce edita:
+
+- Itens do menu
+- Videos do YouTube
+- Cards de aulas/conteudos
+- Beneficios
+- Links de contato
+
+Para adicionar um video, inclua um novo item no array `$videos`:
+
+```php
+[
+    'title' => 'Titulo da aula',
+    'description' => 'Descricao curta da aula.',
+    'youtube_id' => 'ID_DO_VIDEO',
+]
+```
+
+Use somente o ID do video, nao a URL completa. Exemplo: em `https://www.youtube.com/watch?v=abc123`, o ID e `abc123`.
+
+## Deploy
+
+Opcoes simples:
+
+1. Servidor PHP/Apache: envie os arquivos do projeto para o diretorio publico do servidor.
+2. Docker em VPS: use `docker-compose.prod.yml` e ajuste as variaveis de ambiente.
+3. Imagem Docker: publique a imagem em um registry e configure `IMAGE_NAME`.
+
+Exemplo de producao com Docker:
+
+```bash
+docker compose -f docker-compose.prod.yml up -d --build
+```
+
+Se a porta 80 estiver ocupada:
+
+```bash
+HTTP_PORT=8081 docker compose -f docker-compose.prod.yml up -d --build
+```
+
+## Proximos passos
+
+- Criar paginas internas para aulas, agenda e liturgia.
+- Trocar os contatos de exemplo pelos canais oficiais.
+- Adicionar formulario de contato com validacao.
+- Criar painel simples para cadastrar videos sem editar PHP.
+- Revisar acessibilidade com testes automatizados.
+- Adicionar pipeline de validacao PHP/CSS em CI.

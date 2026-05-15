@@ -1,10 +1,12 @@
-version: '3.8'
-
 services:
   web:
     build: .
+    container_name: escola-da-fe-web
     ports:
       - "8080:80"
+    environment:
+      APP_ENV: development
+      BASE_URL: /
     volumes:
       - ./:/var/www/html
     restart: unless-stopped
