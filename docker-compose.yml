@@ -3,7 +3,7 @@ services:
     build: .
     container_name: escola-da-fe-web
     ports:
-      - "8080:80"
+      - "8081:80"
     environment:
       APP_ENV: development
       BASE_URL: /
